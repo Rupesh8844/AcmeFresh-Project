@@ -1,0 +1,5 @@
+package com.acmefresh.model;
+
+public class Customer {
+
+}

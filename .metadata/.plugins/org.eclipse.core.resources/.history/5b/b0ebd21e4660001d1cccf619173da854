@@ -1,0 +1,33 @@
+package com.acmefresh.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+public class AcmeFresh_Hydroponic_Produce {
+
+	@Id
+	Integer productId;
+	
+	@NotNull
+	String productName;
+	
+	
+	@NotNull
+	String producerName;
+	
+	@NotNull
+	Integer quantity_in_kgs;
+	
+	@NotNull
+	Double Price;
+	
+}

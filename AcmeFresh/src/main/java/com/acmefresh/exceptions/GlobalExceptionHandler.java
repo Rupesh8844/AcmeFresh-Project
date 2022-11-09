@@ -16,28 +16,28 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 public class GlobalExceptionHandler {
 
 	
-	@ExceptionHandler(LoginException.class)
+	 @ExceptionHandler(LoginException.class)
 	  public ResponseEntity<MyErrorDetails> loginExceptionHandler(LoginException e, WebRequest wr){
 		
 		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), e.getMessage(), wr.getDescription(false));
 		
 		return new ResponseEntity<>(err,HttpStatus.BAD_REQUEST);
 			
-  }
+      }
 	
 	
-	@ExceptionHandler(CustomerException.class)
-	  public ResponseEntity<MyErrorDetails> customerExceptionHandler(CustomerException e, WebRequest wr){
+	  @ExceptionHandler(CustomerException.class)
+	   public ResponseEntity<MyErrorDetails> customerExceptionHandler(CustomerException e, WebRequest wr){
 		
 		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), e.getMessage(), wr.getDescription(false));
 		
 		return new ResponseEntity<>(err,HttpStatus.BAD_REQUEST);
 			
-    }
+      }
 	
 	
-	@ExceptionHandler(RollbackException.class)
-	 public ResponseEntity<MyErrorDetails> rollbackHandler(RollbackException e, WebRequest wr){
+	 @ExceptionHandler(RollbackException.class)
+	  public ResponseEntity<MyErrorDetails> rollbackHandler(RollbackException e, WebRequest wr){
 	
 		System.out.println("Inside the Exception Handler...");
 		
@@ -84,6 +84,6 @@ public class GlobalExceptionHandler {
 			
 			return new ResponseEntity<>(err,HttpStatus.BAD_REQUEST);
 				
-	      }
+	   }
 	
 }

@@ -1,0 +1,5 @@
+package com.acmefresh.exceptions;
+
+public class UsernameNotFoundException {
+
+}
