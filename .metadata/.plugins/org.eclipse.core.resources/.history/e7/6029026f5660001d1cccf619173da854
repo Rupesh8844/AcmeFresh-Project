@@ -1,0 +1,9 @@
+package com.acmefresh.service.serviceInterface;
+
+import com.acmefresh.model.InfrastructureForCustomer;
+
+public interface InfrastructureForCustomerService {
+
+	public InfrastructureForCustomer savingRequest(InfrastructureForCustomer request);
+	
+}

@@ -1,0 +1,67 @@
+package com.acmefresh.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.acmefresh.DTO.LoginDTO;
+import com.acmefresh.model.AcmeFreshHydroponicProduce;
+import com.acmefresh.model.Client;
+import com.acmefresh.repository.ClientDao;
+import com.acmefresh.repository.ClientSessionDao;
+import com.acmefresh.service.SerivceInterface.ClientService;
+
+@Service
+public class ClientServiceImpl implements ClientService{
+
+	@Autowired
+	private ClientDao clientDao;
+	
+	@Autowired
+	private ClientSessionDao sessionDao;
+	
+	@Autowired
+	private AcmeFreshHydroponicProduce productDao;
+
+	@Override
+	public Client registerClient(Client newuser) {
+		return clientDao.save(newuser);
+	}
+
+	@Override
+	public Client updateClient(Client update, String Username, String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String addProducts(AcmeFreshHydroponicProduce produce, String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String updateProduct(AcmeFreshHydroponicProduce produce, String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String updatePriceOfProductById(Integer id, Double newPrice, String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String deleteByUsername(LoginDTO dto, String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String logoutClient(String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+}

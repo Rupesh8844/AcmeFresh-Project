@@ -9,3 +9,20 @@
 1668011167311	Delete element
 1668013514352	Delete element
 1668013528665	Rename type 'AdminDTO'
+1668015164736	Rename type 'CurrentAdminSession'
+1668015179648	Rename type 'CurrentClientSession'
+1668015187567	Rename type 'CurrentCustomerSession'
+1668015927078	Move compilation unit
+1668015932029	Move compilation unit
+1668015938283	Move compilation unit
+1668015945379	Move compilation unit
+1668015948798	Move compilation unit
+1668015986539	Rename package 'com.acmefresh.service.serviceInterface'
+1668016014240	Move compilation unit
+1668016023960	Move compilation unit
+1668016028252	Delete element
+1668018364790	Move compilation unit
+1668018394081	Move compilation unit
+1668018401172	Move compilation unit
+1668018405708	Move compilation unit
+1668018409537	Move compilation unit

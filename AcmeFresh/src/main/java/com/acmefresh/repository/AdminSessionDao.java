@@ -3,13 +3,15 @@ package com.acmefresh.repository;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import com.acmefresh.model.CurrentAdminSession;
+import com.acmefresh.model.AdminSession;
 
-public interface AdminSessionDao extends JpaRepository<CurrentAdminSession, Integer>{
+@Repository
+public interface AdminSessionDao extends JpaRepository<AdminSession, Integer>{
 	
-	public Optional<CurrentAdminSession> findByAdminId(Integer userId) ;
+	public Optional<AdminSession> findByAdminId(Integer userId) ;
 	
-	public Optional<CurrentAdminSession> findByUuid(String  uuid);
+	public Optional<AdminSession> findByUuid(String  uuid);
 
 }
