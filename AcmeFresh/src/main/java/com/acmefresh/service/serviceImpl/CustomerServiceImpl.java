@@ -1,0 +1,105 @@
+package com.acmefresh.service.serviceImpl;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.acmefresh.DTO.LoginDTO;
+import com.acmefresh.exceptions.LoginException;
+import com.acmefresh.exceptions.UsernameNotFoundException;
+import com.acmefresh.model.AcmeFreshHydroponicProduce;
+import com.acmefresh.model.Customer;
+import com.acmefresh.model.CustomerSession;
+import com.acmefresh.repository.AcmeFreshHydroponicProduceDao;
+import com.acmefresh.repository.CustomerDao;
+import com.acmefresh.repository.CustomerSessionDao;
+import com.acmefresh.service.SerivceInterface.CustomerService;
+
+@Service
+public class CustomerServiceImpl implements CustomerService {
+	@Autowired
+	private CustomerDao cDao;
+	
+	@Autowired
+	private CustomerSessionDao csDao;
+	
+	@Autowired
+	private AcmeFreshHydroponicProduceDao productDao;
+
+	
+	
+	@Override
+	public Customer registerCustomer(Customer newuser) {
+		return cDao.save(newuser);
+	}
+	
+	
+	@Override
+	public Customer updateCustomer(Customer update, String Username, String key) {
+		Customer updatedCustomer = null;
+		Optional<CustomerSession> otp = csDao.findByUuid(key);
+
+		if (otp.isEmpty()) {
+			throw new LoginException("User is not logged in, Please login first!");
+		}
+		else {
+			Optional<Customer> opt = cDao.findByUsername(Username);
+			if (opt.isEmpty()) {
+				throw new UsernameNotFoundException("Username not found. Please provide proper username");
+			}
+			else {
+				updatedCustomer = cDao.save(update);
+			}
+		}
+		return updatedCustomer;
+	}
+
+
+	
+
+	@Override
+	public List<AcmeFreshHydroponicProduce> getAllProduct(String key) {
+		Optional<CustomerSession> otp = csDao.findByUuid(key);
+		if (otp.isEmpty()) {
+			throw new LoginException("User is not logged in, Please login first!");
+		}
+		return productDao.findAll();
+	}
+	
+	
+	
+	@Override
+	public String deleteByUsername(LoginDTO dto, String key) {
+		Optional<CustomerSession> opt = csDao.findByUuid(key);
+		if (opt.isEmpty()) {
+			throw new LoginException("User is not logged in, Please login first!");
+		}
+		else {
+			Optional<Customer> customeropt = cDao.findByUsername(dto.getUsername());
+			if (opt.isEmpty()) {
+				throw new UsernameNotFoundException("Username not found");
+			}
+			else {
+				Customer toBeDelete = customeropt.get();
+				cDao.delete(toBeDelete);
+			}
+		}
+		return "Your Id with Username " + dto.getUsername() + " is Deleted.";
+	}
+
+	@Override
+	public String logoutCustomer(String key) {
+		Optional<CustomerSession> opt = csDao.findByUuid(key);
+		if (opt.isEmpty()) {
+			throw new LoginException("User is not logged in, Please login first!");
+		}
+
+	   csDao.delete(opt.get());
+		return "You have been succefully logged out.";
+	
+	}	
+		
+		
+}

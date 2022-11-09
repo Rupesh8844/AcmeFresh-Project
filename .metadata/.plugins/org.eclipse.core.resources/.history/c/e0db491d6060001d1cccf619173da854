@@ -1,0 +1,155 @@
+package com.acmefresh.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.acmefresh.DTO.LoginDTO;
+import com.acmefresh.exceptions.LoginException;
+import com.acmefresh.exceptions.UsernameNotFoundException;
+import com.acmefresh.model.AcmeFreshHydroponicProduce;
+import com.acmefresh.model.Client;
+import com.acmefresh.model.ClientSession;
+import com.acmefresh.repository.AcmeFreshHydroponicProduceDao;
+import com.acmefresh.repository.ClientDao;
+import com.acmefresh.repository.ClientSessionDao;
+import com.acmefresh.service.SerivceInterface.ClientService;
+
+@Service
+public class ClientServiceImpl implements ClientService{
+
+	@Autowired
+	private ClientDao clientDao;
+	
+	@Autowired
+	private ClientSessionDao sessionDao;
+	
+	@Autowired
+	private AcmeFreshHydroponicProduceDao productDao;
+
+	
+	
+	@Override
+	public Client registerClient(Client newuser) {
+		return clientDao.save(newuser);
+	}
+	
+	
+
+	@Override
+	public Client updateClient(Client update, String Username, String key) {
+		Client updatedClient = null;
+		Optional<ClientSession> otp = sessionDao.findByUuid(key);
+
+		if (otp.isEmpty()) {
+			throw new LoginException("User is not logged in, Please login first!");
+		}
+		else {
+			Optional<Client> opt = clientDao.findByUsername(Username);
+			if (opt.isEmpty()) {
+				throw new UsernameNotFoundException("Username not found. Please provide proper username");
+			}
+			else {
+				updatedClient = clientDao.save(update);
+			}
+		}
+		return updatedClient;
+	}
+	
+	
+
+	@Override
+	public String addProducts(AcmeFreshHydroponicProduce produce, String key) {
+		Optional<ClientSession> otp = sessionDao.findByUuid(key);
+
+		if (otp.isEmpty())
+			throw new LoginException("User is not logged in, Please login first!");
+		
+		productDao.save(produce);
+		
+		return "Product has been added Successfully...";
+	}
+
+	
+	
+	@Override
+	public String updateProduct(AcmeFreshHydroponicProduce produce, String key) {
+		Optional<ClientSession> otp = sessionDao.findByUuid(key);
+
+		if (otp.isEmpty()) {
+			throw new LoginException("User is not logged in, Please login first!");
+		}
+		
+		Optional<AcmeFreshHydroponicProduce> opt=productDao.findById(produce.getProductId());
+		
+		if(opt.isEmpty()) {
+			throw new LoginException("Product not found with this Id..");
+		}
+		
+		productDao.save(produce);
+		return "Product have been updated Successfully...";
+	}
+
+	
+	
+	@Override
+	public String updatePriceOfProductById(Integer id, Double newPrice, String key) {
+		Optional<ClientSession> otp = sessionDao.findByUuid(key);
+
+		if (otp.isEmpty()) {
+			throw new LoginException("User is not logged in, Please login first!");
+		}
+		
+		Optional<AcmeFreshHydroponicProduce> opt=productDao.findById(id);
+		
+		if(opt.isEmpty()) {
+			throw new LoginException("Product not found with this Id..");
+		}
+		
+		AcmeFreshHydroponicProduce old =opt.get();
+		old.setPrice(newPrice);
+		productDao.save(old);
+		return "Price have been updated..";
+	}
+
+	
+	
+	@Override
+	public String deleteByUsername(LoginDTO dto, String key) {
+		
+		Optional<ClientSession> otp = sessionDao.findByUuid(key);
+		
+		if (otp.isEmpty()) {
+			throw new LoginException("User is not logged in, Please login first!");
+		}
+		else {
+			Optional<Client> opt = clientDao.findByUsername(dto.getUsername());
+			if (opt.isEmpty()) {
+				throw new UsernameNotFoundException("Username not found");
+			}
+			else {
+				Client client = opt.get();
+				clientDao.delete(client);
+			}
+		}
+		return "Id with Username " + dto.getUsername() + " is Deleted.";
+	}
+	
+	
+
+	@Override
+	public String logoutClient(String key) {
+		
+		Optional<ClientSession> otp = sessionDao.findByUuid(key);
+		
+		if (otp.isEmpty()) {
+			throw new LoginException("User is not logged in, Please login first!");
+		}
+
+	    sessionDao.delete(otp.get());
+		return "You have been succefully logged out.";
+	}
+
+	
+}
