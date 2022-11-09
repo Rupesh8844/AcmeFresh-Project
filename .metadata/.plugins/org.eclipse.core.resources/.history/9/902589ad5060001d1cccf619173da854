@@ -1,0 +1,5 @@
+package com.acmefresh.DTO;
+
+public class ClientDTO {
+
+}

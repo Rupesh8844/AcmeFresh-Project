@@ -1,0 +1,14 @@
+package com.acmefresh.DTO;
+
+import lombok.Data;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class AdminDTO {
+
+	private String username;
+	private String mobile;
+	private String password;
+	
+}
