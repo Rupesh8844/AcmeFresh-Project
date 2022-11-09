@@ -1,0 +1,8 @@
+package com.acmefresh.exceptions;
+
+public class CustomerException extends RuntimeException\{
+
+	
+	
+	
+}

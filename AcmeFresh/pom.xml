@@ -13,9 +13,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>AcmeFresh</name>
 	<description>Demo project for Spring Boot</description>
-	<properties>
-		<java.version>1.8</java.version>
-	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -33,18 +30,12 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 		
-		
-				<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+			<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 	<dependency>
 	    <groupId>mysql</groupId>
 	    <artifactId>mysql-connector-java</artifactId>
@@ -66,8 +57,25 @@
 	    <artifactId>spring-boot-starter-validation</artifactId>
 	    <version>2.7.2</version>
 	</dependency>
+	
+	
+		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter -->
+	<dependency>
+	    <groupId>io.springfox</groupId>
+	    <artifactId>springfox-boot-starter</artifactId>
+	    <version>3.0.0</version>
+	</dependency>
 		
+	
+	
+		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+	<dependency>
+	    <groupId>io.springfox</groupId>
+	    <artifactId>springfox-swagger-ui</artifactId>
+	    <version>3.0.0</version>
+	</dependency>
 		
+	
 	</dependencies>
 
 	<build>
@@ -75,14 +83,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
