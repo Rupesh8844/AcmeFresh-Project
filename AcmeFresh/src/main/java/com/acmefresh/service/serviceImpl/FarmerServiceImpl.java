@@ -31,14 +31,14 @@ public class FarmerServiceImpl implements FarmerService{
 	
 	
 	@Override
-	public Farmer registerClient(Farmer newuser) {
+	public Farmer registerFarmer(Farmer newuser) {
 		return clientDao.save(newuser);
 	}
 	
 	
 
 	@Override
-	public Farmer updateClient(Farmer update, String Username, String key) {
+	public Farmer updateFarmer(Farmer update, String Username, String key) {
 		Farmer updatedClient = null;
 		Optional<FarmerSession> otp = sessionDao.findByUuid(key);
 
@@ -139,7 +139,7 @@ public class FarmerServiceImpl implements FarmerService{
 	
 
 	@Override
-	public String logoutClient(String key) {
+	public String logoutFarmer(String key) {
 		
 		Optional<FarmerSession> otp = sessionDao.findByUuid(key);
 		

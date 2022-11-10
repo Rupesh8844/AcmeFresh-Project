@@ -32,55 +32,55 @@ public class FarmerController {
 	private LoginServiceImpl loginService;
 	
 	@Autowired
-	private FarmerServiceImpl clientService;
+	private FarmerServiceImpl farmerService;
 	
 	@PostMapping("/login")
-	public ResponseEntity<FarmerSession> loginClient(@RequestBody LoginDTO dto) {
+	public ResponseEntity<FarmerSession> loginFarmerHandler(@RequestBody LoginDTO dto) {
 		return new ResponseEntity<>(loginService.loginClient(dto), HttpStatus.ACCEPTED);
 	}
 
 	@PostMapping("/register")
-	public ResponseEntity<Farmer> registerCustomer(@RequestBody Farmer newuser) {
-		return new ResponseEntity<>(clientService.registerClient(newuser), HttpStatus.CREATED);
+	public ResponseEntity<Farmer> registerFarmerHandler(@RequestBody Farmer newuser) {
+		return new ResponseEntity<>(farmerService.registerFarmer(newuser), HttpStatus.CREATED);
 
 	}
 
 
 	@PutMapping("/update/{username}")
-	public ResponseEntity<Farmer> updateCustomer(@RequestBody Farmer update, @PathVariable("username") String username,
+	public ResponseEntity<Farmer> updateFarmerHandler(@RequestBody Farmer update, @PathVariable("username") String username,
 			@RequestParam String key) {
-		return new ResponseEntity<>(clientService.updateClient(update, username, key), HttpStatus.ACCEPTED);
+		return new ResponseEntity<>(farmerService.updateFarmer(update, username, key), HttpStatus.ACCEPTED);
 	}
 
 	
 	
 	@PostMapping("/addnewproduct")
-	public ResponseEntity<String> addNewProduct(@Valid @RequestBody AcmeFreshHydroponicProduce produce, String key) {
-		return new ResponseEntity<>(clientService.addProducts(produce, key), HttpStatus.ACCEPTED);
+	public ResponseEntity<String> addNewProductHandler(@Valid @RequestBody AcmeFreshHydroponicProduce produce, String key) {
+		return new ResponseEntity<>(farmerService.addProducts(produce, key), HttpStatus.ACCEPTED);
 	}
 	
 	@PatchMapping("/updatepriceofproduct/{id}")
-	public ResponseEntity<String> updatePriceByProductId(@RequestParam Double price , @PathVariable("id") Integer id,
+	public ResponseEntity<String> updatePriceByProductIdHandler(@RequestParam Double price , @PathVariable("id") Integer id,
 			@RequestParam String key) {
-		return new ResponseEntity<>(clientService.updatePriceOfProductById(id, price, key), HttpStatus.ACCEPTED);
+		return new ResponseEntity<>(farmerService.updatePriceOfProductById(id, price, key), HttpStatus.ACCEPTED);
 	}
 	
 	@PutMapping("/updateproduct")
-	public ResponseEntity<String> updateProduct(@Valid @RequestBody AcmeFreshHydroponicProduce produce, @RequestParam String key) {
-		return new ResponseEntity<>(clientService.updateProduct(produce, key), HttpStatus.ACCEPTED);
+	public ResponseEntity<String> updateProductHandler(@Valid @RequestBody AcmeFreshHydroponicProduce produce, @RequestParam String key) {
+		return new ResponseEntity<>(farmerService.updateProduct(produce, key), HttpStatus.ACCEPTED);
 	}
 	
 	
 	
 	@DeleteMapping("/deleteaccount")
-	public ResponseEntity<String> deleteCustomer(@RequestBody LoginDTO dto, @RequestParam String key) {
-		return new ResponseEntity<>(clientService.deleteByUsername(dto, key), HttpStatus.ACCEPTED);
+	public ResponseEntity<String> deleteFarmerHandler(@RequestBody LoginDTO dto, @RequestParam String key) {
+		return new ResponseEntity<>(farmerService.deleteByUsername(dto, key), HttpStatus.ACCEPTED);
 
 	}
 
 	@GetMapping("/logout")
-	public ResponseEntity<String> logoutCustomer(@RequestParam String key) {
-		return new ResponseEntity<>(clientService.logoutClient(key), HttpStatus.ACCEPTED);
+	public ResponseEntity<String> logoutFarmerHandler(@RequestParam String key) {
+		return new ResponseEntity<>(farmerService.logoutFarmer(key), HttpStatus.ACCEPTED);
 
 	}
 	

@@ -2194,3 +2194,57 @@ Binding(CTRL+SHIFT+C,
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-11-10 13:08:55.774
 !MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.BgLPImsE => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-11-10 13:17:53.850
+!MESSAGE Entering DelegatingStreamConnectionProvider()
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-11-10 13:17:53.851
+!MESSAGE DelegatingStreamConnectionProvider classloader = org.eclipse.osgi.internal.loader.EquinoxClassLoader@2ba6bd5a[org.springframework.tooling.boot.ls:1.36.0.202206171137(id=567)]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-11-10 13:17:53.852
+!MESSAGE SpringBootLanguageServer exists!
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-11-10 13:17:59.284
+!MESSAGE Boot LS startup time from start to initialized: 5429ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-11-10 13:17:59.614
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.tdutXMrTisBatched = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-11-10 13:17:59.615
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-11-10 13:17:59.616
+!MESSAGE Scheduling initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-11-10 13:17:59.618
+!MESSAGE Scheduling initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-11-10 13:17:59.619
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-11-10 13:17:59.619
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.tdutXMrT => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-11-10 13:17:59.631
+!MESSAGE classpath=116 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-11-10 13:17:59.641
+!MESSAGE buffering callback sts4.classpath.tdutXMrT AcmeFresh false 116
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-11-10 13:17:59.642
+!MESSAGE executing callback sts4.classpath.tdutXMrT 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-11-10 13:18:00.617
+!MESSAGE executing callback sts4.classpath.tdutXMrT SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-11-10 16:00:40.023
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.tdutXMrT
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-11-10 16:00:40.025
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.tdutXMrT
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-11-10 16:00:40.027
+!MESSAGE subsribers = {}
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-11-10 16:00:40.028
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.tdutXMrT => OK

@@ -6,9 +6,9 @@ import com.acmefresh.model.Farmer;
 
 public interface FarmerService {
 
-	public Farmer registerClient(Farmer newuser);
+	public Farmer registerFarmer(Farmer newuser);
 	
-	public Farmer  updateClient(Farmer  update, String Username, String key);
+	public Farmer  updateFarmer(Farmer  update, String Username, String key);
 
 	public String addProducts(AcmeFreshHydroponicProduce produce, String key);
 	
@@ -18,6 +18,6 @@ public interface FarmerService {
 
 	public String deleteByUsername(LoginDTO  dto, String key);
 
-	public String logoutClient(String key);
+	public String logoutFarmer(String key);
 	
 }

@@ -37,26 +37,26 @@ public class CustomerController {
 	
 	
 	@PostMapping("/login")
-	public ResponseEntity<CustomerSession> loginAdmin(@RequestBody LoginDTO dto) {
+	public ResponseEntity<CustomerSession> loginCustomerHandler(@RequestBody LoginDTO dto) {
 		return new ResponseEntity<>(loginService.loginCustomer(dto), HttpStatus.ACCEPTED);
 	}
 
 	@PostMapping("/register")
-	public ResponseEntity<Customer> registerCustomer(@RequestBody Customer newuser) {
+	public ResponseEntity<Customer> registerCustomerHandler(@RequestBody Customer newuser) {
 		return new ResponseEntity<>(customersService.registerCustomer(newuser), HttpStatus.CREATED);
 
 	}
 
 
 	@PutMapping("/update/{username}")
-	public ResponseEntity<Customer> updateCustomer(@RequestBody Customer update, @PathVariable("username") String username,
+	public ResponseEntity<Customer> updateCustomerHandler(@RequestBody Customer update, @PathVariable("username") String username,
 			@RequestParam String key) {
 		return new ResponseEntity<>(customersService.updateCustomer(update, username, key), HttpStatus.ACCEPTED);
 	}
 
 	
 	@GetMapping("/products")
-	public ResponseEntity<List<AcmeFreshHydroponicProduce>> getAllProducts(@RequestParam String key) {
+	public ResponseEntity<List<AcmeFreshHydroponicProduce>> getAllProductsHandler(@RequestParam String key) {
 
 		return new ResponseEntity<>(customersService.getAllProduct(key), HttpStatus.ACCEPTED);
 
@@ -65,13 +65,13 @@ public class CustomerController {
 	
 	
 	@DeleteMapping("/deleteaccount")
-	public ResponseEntity<String> deleteCustomer(@RequestBody LoginDTO dto, @RequestParam String key) {
+	public ResponseEntity<String> deleteCustomerHanlder(@RequestBody LoginDTO dto, @RequestParam String key) {
 		return new ResponseEntity<>(customersService.deleteByUsername(dto, key), HttpStatus.ACCEPTED);
 
 	}
 
 	@GetMapping("/logout")
-	public ResponseEntity<String> logoutCustomer(@RequestParam String key) {
+	public ResponseEntity<String> logoutCustomerHandler(@RequestParam String key) {
 
 		return new ResponseEntity<>(customersService.logoutCustomer(key), HttpStatus.ACCEPTED);
 

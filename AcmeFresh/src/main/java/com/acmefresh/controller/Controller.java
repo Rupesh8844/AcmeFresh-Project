@@ -24,20 +24,16 @@ public class Controller {
 	private InfrastructureForCustomerService  infrastructureForCustomerService;
 	
 	@GetMapping("/products")
-	public ResponseEntity<List<ListOfHydrophonicInfrastructure>> listOfInfrastructueProvidedForCustomer(){
+	public ResponseEntity<List<ListOfHydrophonicInfrastructure>> listOfInfrastructueProvidedForCustomerHandler(){
 		List<ListOfHydrophonicInfrastructure> values=Arrays.asList(ListOfHydrophonicInfrastructure.values());
 		return new ResponseEntity<>(values, HttpStatus.ACCEPTED);
 	}
 	
-	@GetMapping("/")
-	public ResponseEntity<String> welcome(){
-		return new ResponseEntity<>("Welcome to AcmeFresh, We Provide services for Hydroponic Infrastructure and Produce from Hydroponic Farms.", HttpStatus.ACCEPTED);
-	}
 	
 	@PostMapping("/products/newrequest")
 	public ResponseEntity<String> usersResponseForInfrastructure(@RequestBody InfrastructureForCustomer newRequest){
 		infrastructureForCustomerService.savingRequest(newRequest);
-		return new ResponseEntity<>("Your response have been Submitted, Our Team will reach you shortly..", HttpStatus.CREATED);
+		return new ResponseEntity<>("Your response have been Submitted...", HttpStatus.CREATED);
 	}
 	
 }
