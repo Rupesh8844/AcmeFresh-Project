@@ -1,0 +1,21 @@
+package com.acmefresh.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.acmefresh.service.serviceImpl.CustomerServiceImpl;
+import com.acmefresh.service.serviceImpl.LoginServiceImpl;
+
+@RestController
+@RequestMapping("/homepage/store/customer")
+public class CustomerController {
+
+	
+	@Autowired
+	private LoginServiceImpl loginService;
+	
+	@Autowired
+	private CustomerServiceImpl customersService;
+	
+}

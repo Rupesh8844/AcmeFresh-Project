@@ -12,14 +12,14 @@ import com.acmefresh.exceptions.CustomerException;
 import com.acmefresh.exceptions.LoginException;
 import com.acmefresh.model.Admin;
 import com.acmefresh.model.AdminSession;
-import com.acmefresh.model.Client;
-import com.acmefresh.model.ClientSession;
+import com.acmefresh.model.Farmer;
+import com.acmefresh.model.FarmerSession;
 import com.acmefresh.model.Customer;
 import com.acmefresh.model.CustomerSession;
 import com.acmefresh.repository.AdminDao;
 import com.acmefresh.repository.AdminSessionDao;
-import com.acmefresh.repository.ClientDao;
-import com.acmefresh.repository.ClientSessionDao;
+import com.acmefresh.repository.FarmerDao;
+import com.acmefresh.repository.FarmerSessionDao;
 import com.acmefresh.repository.CustomerDao;
 import com.acmefresh.repository.CustomerSessionDao;
 import com.acmefresh.service.SerivceInterface.LoginService;
@@ -34,10 +34,10 @@ public class LoginServiceImpl implements LoginService{
 	private CustomerSessionDao customerSessionDAO;
 	
 	@Autowired
-	private ClientDao clientDao;
+	private FarmerDao clientDao;
 	
 	@Autowired
-	private ClientSessionDao clientSessionDao;
+	private FarmerSessionDao clientSessionDao;
 	
 	@Autowired
 	private AdminDao adminDao;
@@ -83,24 +83,24 @@ public class LoginServiceImpl implements LoginService{
 	
 
 	@Override
-	public ClientSession loginClient(LoginDTO client) {
+	public FarmerSession loginClient(LoginDTO client) {
 		
-		Optional<Client> res = clientDao.findByMobile(client.getMobile());
+		Optional<Farmer> res = clientDao.findByMobile(client.getMobile());
 
 		if (!res.isPresent()) {
 			System.out.println(res + " Data is empty");
 			throw new CustomerException("Client does not exist with the given mobile number");
 		}
 
-		Client existingClient = res.get();
-		Optional<ClientSession> opt = clientSessionDao.findByClientId(existingClient.getClientId());
+		Farmer existingClient = res.get();
+		Optional<FarmerSession> opt = clientSessionDao.findByClientId(existingClient.getClientId());
 
 		if (opt.isPresent())
 			throw new LoginException("User already logged in");
 
 		if (existingClient.getPassword().equals(client.getPassword())) {
 
-			ClientSession newSession = new ClientSession();
+			FarmerSession newSession = new FarmerSession();
 
 			newSession.setClientId(existingClient.getClientId());
 			newSession.setLocalDateTime(LocalDateTime.now());

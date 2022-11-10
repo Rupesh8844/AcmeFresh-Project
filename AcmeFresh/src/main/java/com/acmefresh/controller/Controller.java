@@ -1,14 +1,43 @@
 package com.acmefresh.controller;
 
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.acmefresh.model.InfrastructureForCustomer;
+import com.acmefresh.model.ListOfHydrophonicInfrastructure;
+import com.acmefresh.service.SerivceInterface.InfrastructureForCustomerService;
+
 @RestController
+@RequestMapping("/homepage")
 public class Controller {
 
-	@GetMapping("/help")
-	public String help() {
-		return "Hello Rupesh";
+	@Autowired
+	private InfrastructureForCustomerService  infrastructureForCustomerService;
+	
+	@GetMapping("/products")
+	public ResponseEntity<List<ListOfHydrophonicInfrastructure>> listOfInfrastructueProvidedForCustomer(){
+		List<ListOfHydrophonicInfrastructure> values=Arrays.asList(ListOfHydrophonicInfrastructure.values());
+		return new ResponseEntity<>(values, HttpStatus.ACCEPTED);
+	}
+	
+	@GetMapping("/")
+	public ResponseEntity<String> welcome(){
+		return new ResponseEntity<>("Welcome to AcmeFresh, We Provide services for Hydroponic Infrastructure and Produce from Hydroponic Farms.", HttpStatus.ACCEPTED);
+	}
+	
+	@PostMapping("/products/newrequest")
+	public ResponseEntity<String> usersResponseForInfrastructure(@RequestBody InfrastructureForCustomer newRequest){
+		infrastructureForCustomerService.savingRequest(newRequest);
+		return new ResponseEntity<>("Your response have been Submitted, Our Team will reach you shortly..", HttpStatus.CREATED);
 	}
 	
 }
