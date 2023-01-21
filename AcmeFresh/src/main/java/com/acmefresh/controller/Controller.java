@@ -20,7 +20,6 @@ import com.acmefresh.service.SerivceInterface.InfrastructureForCustomerService;
 @RequestMapping("/homepage")
 public class Controller {
 
-	
 	@Autowired
 	private InfrastructureForCustomerService  infrastructureForCustomerService;
 	
