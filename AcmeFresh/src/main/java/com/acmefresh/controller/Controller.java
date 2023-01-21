@@ -21,8 +21,6 @@ import com.acmefresh.service.SerivceInterface.InfrastructureForCustomerService;
 public class Controller {
 
 	
-	
-	
 	@Autowired
 	private InfrastructureForCustomerService  infrastructureForCustomerService;
 	
@@ -38,10 +36,4 @@ public class Controller {
 		infrastructureForCustomerService.savingRequest(newRequest);
 		return new ResponseEntity<>("Your response have been Submitted...", HttpStatus.CREATED);
 	}
-	
-	
-	
 }
-
-
-
