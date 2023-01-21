@@ -21,6 +21,8 @@ import com.acmefresh.service.SerivceInterface.InfrastructureForCustomerService;
 public class Controller {
 
 	
+	
+	
 	@Autowired
 	private InfrastructureForCustomerService  infrastructureForCustomerService;
 	
