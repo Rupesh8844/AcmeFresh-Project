@@ -75,15 +75,6 @@ public class GlobalExceptionHandler {
 	   }
 	   
 	   
-	   @ExceptionHandler(Exception.class)
-		  public ResponseEntity<MyErrorDetails> logicalHandler(Exception e, WebRequest wr){
-		
-			System.out.println("Inside the Exception Handler...");
-			
-			MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), e.getMessage(), wr.getDescription(false));
-			
-			return new ResponseEntity<>(err,HttpStatus.BAD_REQUEST);
-				
-	   }
+	 
 	
 }
