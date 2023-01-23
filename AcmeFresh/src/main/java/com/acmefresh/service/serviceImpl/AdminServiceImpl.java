@@ -181,11 +181,4 @@ public class AdminServiceImpl implements AdminService{
 		adminSessionDao.delete(otp.get());
 		return "Admin has been Successfully logged out.";
 	}
-
-	
-
-	
-	
 }
-
-
