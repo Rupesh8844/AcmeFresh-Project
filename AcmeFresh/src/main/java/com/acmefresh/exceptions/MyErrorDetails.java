@@ -11,8 +11,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class MyErrorDetails {
 
+	
 	private LocalDateTime timestamp;
 	private String message;
-	
+	private String details;
 	
 }
