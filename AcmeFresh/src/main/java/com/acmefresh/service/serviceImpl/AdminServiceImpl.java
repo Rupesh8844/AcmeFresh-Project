@@ -146,7 +146,41 @@ public class AdminServiceImpl implements AdminService{
 		
 	}
 	
+		@Override
+	public String deleteByUsername(LoginDTO dto, String key) {
+		
+		Optional<AdminSession> otp = adminSessionDao.findByUuid(key);
+		
+		if (otp.isEmpty()) {
+			throw new LoginException("Admin is not logged in, Please login first!");
+		}
+		else {
+			Optional<Admin> opt = adminDao.findByUsername(dto.getUsername());
+			if (opt.isEmpty()) {
+				throw new UsernameNotFoundException("Username not found");
+			}
+			else {
+				Admin admin = opt.get();
+				adminDao.delete(admin);
+			}
+		}
+		return "Id with username "+dto.getUsername()+"is deletd Successfully...";
+	}
 	
+	
+
+	@Override
+	public String logoutAdmin(String key) throws LoginException {
+		
+		Optional<AdminSession> otp = adminSessionDao.findByUuid(key);
+		
+		if (otp.isEmpty()) {
+			throw new LoginException("Admin is not logged in, Please login first!");
+		}
+
+		adminSessionDao.delete(otp.get());
+		return "Admin has been Successfully logged out.";
+	}
 
 }
 
