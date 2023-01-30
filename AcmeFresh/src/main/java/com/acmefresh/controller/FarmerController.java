@@ -77,6 +77,8 @@ public class FarmerController {
 		return new ResponseEntity<>(farmerService.deleteByUsername(dto, key), HttpStatus.ACCEPTED);
 
 	}
+	
+	
 
 	
 }
