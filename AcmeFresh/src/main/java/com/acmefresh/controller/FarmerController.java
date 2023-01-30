@@ -78,4 +78,10 @@ public class FarmerController {
 	}
 	
 	
+	@GetMapping("/logout")
+	public ResponseEntity<String> logoutFarmerHandler(@RequestParam String key) {
+		return new ResponseEntity<>(farmerService.logoutFarmer(key), HttpStatus.ACCEPTED);
+
+	}
+	
 }
