@@ -71,7 +71,6 @@ public class FarmerController {
 	}
 	
 	
-	
 	@DeleteMapping("/deleteaccount")
 	public ResponseEntity<String> deleteFarmerHandler(@RequestBody LoginDTO dto, @RequestParam String key) {
 		return new ResponseEntity<>(farmerService.deleteByUsername(dto, key), HttpStatus.ACCEPTED);
